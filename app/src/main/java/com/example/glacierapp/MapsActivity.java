@@ -55,8 +55,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     LatLng latLng;
     Marker mCurrLocationMarker;
     FusedLocationProviderClient mFusedLocationClient;
-    private DatabaseReference mDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,9 +190,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onInfoWindowClick(Marker marker) {
 
-        AlertDialog.Builder setDescriptionDialog = new AlertDialog.Builder(marker);
-        setDescriptionDialog.setTitle("Reset Password?");
-        setDescriptionDialog.setMessage("Enter new password");
+
     }
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
