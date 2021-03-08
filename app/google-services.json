@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "252813083875",
+    "firebase_url": "https://glacierapp-4becb.firebaseio.com",
+    "project_id": "glacierapp-4becb",
+    "storage_bucket": "glacierapp-4becb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252813083875:android:1e4be0f2cd392ba3ec71d6",
+        "android_client_info": {
+          "package_name": "com.example.glacierapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252813083875-jf4l8ag38buijmkdonj6vvon6s5ci14c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy3WY6Q-TrmswXTNa3kRfM6O-rUnIleJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252813083875-jf4l8ag38buijmkdonj6vvon6s5ci14c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
