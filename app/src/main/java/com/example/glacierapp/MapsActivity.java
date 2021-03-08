@@ -2,9 +2,13 @@ package com.example.glacierapp;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Build;
 import android.os.Looper;
@@ -13,10 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
@@ -42,6 +48,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
 import java.util.List;
 
 
@@ -56,6 +63,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Marker mCurrLocationMarker;
     FusedLocationProviderClient mFusedLocationClient;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +73,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
+
+
     }
 
     public void showPopup(View v){
@@ -128,11 +139,32 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId() == R.id.item2) {
-            Toast.makeText(this, "Happy", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Happy").icon(BitmapDescriptorFactory.fromResource(R.drawable.happy)).draggable(true));
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Happy");
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Happy").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.happy)).draggable(true));
 
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
         if (item.getItemId() == R.id.item3) {
             Toast.makeText(this, "Angry", Toast.LENGTH_SHORT).show();
