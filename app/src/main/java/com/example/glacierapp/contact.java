@@ -52,7 +52,6 @@ public class contact extends AppCompatActivity {
                 String[] recipents = emailto.split(",");
                 String subject = "Glacier contact Form";
                 String message = messageText.getText().toString();
-
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.putExtra(Intent.EXTRA_EMAIL, recipents);
                 intent.putExtra(Intent.EXTRA_SUBJECT, subject);

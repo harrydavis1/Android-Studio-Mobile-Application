@@ -146,6 +146,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
             final EditText desctext = (EditText)mView.findViewById(R.id.descText);
             emotiontext.setText("Happy");
+            emotiontext.setTextColor(Color.parseColor("#FDD835"));
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -167,53 +168,202 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
         if (item.getItemId() == R.id.item3) {
-            Toast.makeText(this, "Angry", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Angry").icon(BitmapDescriptorFactory.fromResource(R.drawable.angry)).draggable(true));
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Angry");
+            emotiontext.setTextColor(Color.parseColor("#E53935"));
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Angry").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.angry)).draggable(true));
 
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
-        if (item.getItemId() == R.id.item4) {
-            Toast.makeText(this, "Embarrassed", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Embarrassed").icon(BitmapDescriptorFactory.fromResource(R.drawable.embarrased)).draggable(true));
 
+        if (item.getItemId() == R.id.item4) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Embarrassed");
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Embarrassed").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.embarrased)).draggable(true));
+
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
         if (item.getItemId() == R.id.item5) {
-            Toast.makeText(this, "Excited", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Excited" ).icon(BitmapDescriptorFactory.fromResource(R.drawable.excited)).draggable(true));
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Excited");
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Excited").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.excited)).draggable(true));
 
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
         if (item.getItemId() == R.id.item6) {
-            Toast.makeText(this, "Sad", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Sad").icon(BitmapDescriptorFactory.fromResource(R.drawable.sad)).draggable(true));
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Sad");
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Sad").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.sad)).draggable(true));
 
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
         if (item.getItemId() == R.id.item7) {
-            Toast.makeText(this, "Shy", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Shy").icon(BitmapDescriptorFactory.fromResource(R.drawable.shy)).draggable(true));
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Shy");
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Shy").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.shy)).draggable(true));
 
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
         if (item.getItemId() == R.id.item8) {
-            Toast.makeText(this, "Surprised", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Surprised").icon(BitmapDescriptorFactory.fromResource(R.drawable.suprised)).draggable(true));
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Surprised");
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Surprised").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.suprised)).draggable(true));
 
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
         if (item.getItemId() == R.id.item9) {
-            Toast.makeText(this, "Worried", Toast.LENGTH_SHORT).show();
-            Marker marker = mGoogleMap.addMarker(
-                    new MarkerOptions().position(latLng).title("Worried").icon(BitmapDescriptorFactory.fromResource(R.drawable.worried)).draggable(true));
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    MapsActivity.this);
+            LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+            View mView = inflater.inflate(R.layout.markerdesc, null);
+            final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+            final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+            emotiontext.setText("Worried");
+            builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String descmessage = desctext.getText().toString();
+                    Marker marker = mGoogleMap.addMarker(
+                            new MarkerOptions().position(latLng).title("Worried").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.worried)).draggable(true));
 
+                }
+            })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return true;
+
         }
         return false;
     }
@@ -221,9 +371,42 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(
+                MapsActivity.this);
+        LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
+        View mView = inflater.inflate(R.layout.markerdesc, null);
+        final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+        final EditText desctext = (EditText)mView.findViewById(R.id.descText);
+
+        builder.setView(mView).setPositiveButton("Apply Changes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String descmessage = desctext.getText().toString();
 
 
-    }
+            }
+        })
+                .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        marker.remove();
+                    }
+                })
+                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+
+        }
+
+
+
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private void checkLocationPermission() {
