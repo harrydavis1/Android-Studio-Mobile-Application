@@ -34,7 +34,7 @@ public class Support extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId, fullname, phone;
     FirebaseUser user;
-    TextView moreInfobut;
+    TextView moreInfobut, moreInfobut2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class Support extends AppCompatActivity {
         user = fAuth.getCurrentUser();
         userId = fAuth.getCurrentUser().getUid();
         moreInfobut = findViewById(R.id.moreInfobut);
+        moreInfobut2 = findViewById(R.id.moreInfobut2);
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -69,6 +70,41 @@ public class Support extends AppCompatActivity {
                 final EditText descText = (EditText)mView.findViewById(R.id.descText);
                 descText.setText("Mind Charity Tel: 011111111 \nEmail: mind@email.com \nAddress: Mind Charity, Mind Lane, London, E32 7HB");
 
+                builder.setView(mView).setPositiveButton("Call", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialContactPhone("+447747851396");
+
+
+                    }
+                })
+                        .setNegativeButton("Text Message", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                sendingSms();
+                            }
+                        })
+                        .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
+        moreInfobut2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        Support.this);
+                LayoutInflater inflater = Support.this.getLayoutInflater();
+                View mView = inflater.inflate(R.layout.supportinfodesc, null);
+                final EditText descText = (EditText)mView.findViewById(R.id.descText);
+                descText.setText("Refuge Charity Tel: 011111111 \nEmail: Refuge@email.com \nAddress: Refuge Charity, Refuge Lane, London, E32 7HB");
                 builder.setView(mView).setPositiveButton("Call", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

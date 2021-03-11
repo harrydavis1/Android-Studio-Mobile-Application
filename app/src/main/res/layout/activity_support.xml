@@ -36,12 +36,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.15" />
 
-
+        <ImageView
+            android:id="@+id/logo4"
+            android:layout_width="140dp"
+            android:layout_height="117dp"
+            android:src="@drawable/hlpn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.024"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.529" />
 
         <ImageView
             android:id="@+id/logo2"
-            android:layout_width="128dp"
-            android:layout_height="115dp"
+            android:layout_width="140dp"
+            android:layout_height="117dp"
             android:src="@drawable/mind"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +75,20 @@
             app:layout_constraintVertical_bias="0.373" />
 
         <TextView
+            android:id="@+id/moreInfobut2"
+            android:layout_width="86dp"
+            android:layout_height="27dp"
+            android:text="More Info"
+            android:textColor="#3949AB"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.589" />
+
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="248dp"
             android:layout_height="69dp"
@@ -76,6 +100,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.28" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="248dp"
+            android:layout_height="69dp"
+            android:text="Refuge is a United Kingdom charity providing specialist support for women and children experiencing domestic violence."
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.963"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
