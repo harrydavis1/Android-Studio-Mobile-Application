@@ -23,8 +23,8 @@ tools:context=".MapsActivity">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="637dp"
+        android:layout_width="409dp"
+        android:layout_height="579dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -34,6 +34,35 @@ tools:context=".MapsActivity">
         tools:context=".MapsActivity">
 
     </androidx.fragment.app.FragmentContainerView>
+
+    <EditText
+        android:id="@+id/locationSearch"
+        android:layout_width="364dp"
+        android:layout_height="47dp"
+        android:layout_weight="0.5"
+        android:hint="Search Location"
+        android:textColorHint="#5E000000"
+        android:textColor="@color/black"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149" />
+
+    <ImageView
+        android:id="@+id/searchbut"
+        android:layout_width="42dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149"
+        android:onClick="searchLocation"/>
 
     <ImageView
         android:id="@+id/imageView2"

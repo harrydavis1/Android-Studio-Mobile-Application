@@ -36,6 +36,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.15" />
 
+
+
         <ImageView
             android:id="@+id/logo2"
             android:layout_width="128dp"
@@ -48,37 +50,32 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.284" />
 
-        <Button
-            android:id="@+id/smsbutton"
-            android:layout_width="178dp"
-            android:layout_height="36dp"
-            android:background="@color/colorAccent"
-            android:text="Text Message"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:backgroundTint="#0088FF"
+        <TextView
+            android:id="@+id/moreInfobut"
+            android:layout_width="86dp"
+            android:layout_height="27dp"
+            android:text="More Info"
+            android:textColor="#3949AB"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.025"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.419" />
+            app:layout_constraintVertical_bias="0.373" />
 
-        <Button
-            android:id="@+id/callbutton"
-            android:layout_width="178dp"
-            android:layout_height="36dp"
-            android:background="@color/colorAccent"
-            android:text="Call"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:backgroundTint="#0088FF"
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="248dp"
+            android:layout_height="69dp"
+            android:text="Mind is a mental health charity in England and Wales. Mind offers information and advice to people with mental health problems."
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.972"
+            app:layout_constraintHorizontal_bias="0.963"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.418" />
+            app:layout_constraintVertical_bias="0.28" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

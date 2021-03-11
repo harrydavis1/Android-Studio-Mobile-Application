@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Looper;
@@ -49,6 +51,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -131,7 +134,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latLng.latitude, latLng.longitude)).zoom(16).build();
                 mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
             }
         }
 
@@ -194,7 +196,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             return true;
-
         }
 
         if (item.getItemId() == R.id.item4) {
@@ -205,13 +206,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
             final EditText desctext = (EditText)mView.findViewById(R.id.descText);
             emotiontext.setText("Embarrassed");
+            emotiontext.setTextColor(Color.parseColor("#5E35B1"));
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String descmessage = desctext.getText().toString();
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Embarrassed").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.embarrased)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -223,7 +224,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             return true;
-
         }
         if (item.getItemId() == R.id.item5) {
             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -233,13 +233,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
             final EditText desctext = (EditText)mView.findViewById(R.id.descText);
             emotiontext.setText("Excited");
+            emotiontext.setTextColor(Color.parseColor("#43A047"));
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String descmessage = desctext.getText().toString();
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Excited").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.excited)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -251,7 +251,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             return true;
-
         }
         if (item.getItemId() == R.id.item6) {
             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -261,13 +260,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
             final EditText desctext = (EditText)mView.findViewById(R.id.descText);
             emotiontext.setText("Sad");
+            emotiontext.setTextColor(Color.parseColor("#3949AB"));
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String descmessage = desctext.getText().toString();
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Sad").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.sad)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -279,7 +278,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             return true;
-
         }
         if (item.getItemId() == R.id.item7) {
             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -289,13 +287,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
             final EditText desctext = (EditText)mView.findViewById(R.id.descText);
             emotiontext.setText("Shy");
+            emotiontext.setTextColor(Color.parseColor("#D81B60"));
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String descmessage = desctext.getText().toString();
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Shy").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.shy)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -307,7 +305,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             return true;
-
         }
         if (item.getItemId() == R.id.item8) {
             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -317,13 +314,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
             final EditText desctext = (EditText)mView.findViewById(R.id.descText);
             emotiontext.setText("Surprised");
+            emotiontext.setTextColor(Color.parseColor("#FF03DAC5"));
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String descmessage = desctext.getText().toString();
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Surprised").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.suprised)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -335,7 +332,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             return true;
-
         }
         if (item.getItemId() == R.id.item9) {
             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -345,13 +341,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
             final EditText desctext = (EditText)mView.findViewById(R.id.descText);
             emotiontext.setText("Worried");
+            emotiontext.setTextColor(Color.parseColor("#E53935"));
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String descmessage = desctext.getText().toString();
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Worried").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.worried)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -363,11 +359,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             return true;
-
         }
         return false;
     }
-
 
     @Override
     public void onInfoWindowClick(Marker marker) {
@@ -376,14 +370,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LayoutInflater inflater = MapsActivity.this.getLayoutInflater();
         View mView = inflater.inflate(R.layout.markerdesc, null);
         final EditText emotiontext = (EditText)mView.findViewById(R.id.emotiontext);
+
+        emotiontext.setText(marker.getTitle());
         final EditText desctext = (EditText)mView.findViewById(R.id.descText);
 
         builder.setView(mView).setPositiveButton("Apply Changes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String descmessage = desctext.getText().toString();
+                String descString = desctext.getText().toString();
+                marker.setSnippet("");
 
-
+                marker.setSnippet(descString);
             }
         })
                 .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
@@ -401,12 +398,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
 
+    public void searchLocation(View view) {
+        EditText locationSearch = (EditText) findViewById(R.id.locationSearch);
+        String location = locationSearch.getText().toString();
+        List<Address> addressList = null;
 
+        Geocoder geocoder = new Geocoder(this);
+        try {
+            addressList = geocoder.getFromLocationName(location, 1);
         }
-
-
-
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        Address address = addressList.get(0);
+        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+        mGoogleMap.addMarker(new MarkerOptions().position(latLng).title(location));
+        mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+    }
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private void checkLocationPermission() {
