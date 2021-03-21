@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,11 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
@@ -43,31 +39,31 @@ public class Login extends AppCompatActivity {
         Textviewsignup = findViewById(R.id.Textviewsignup);
         forgotpassword = findViewById(R.id.forgotpassword);
 
-        loginButton.setOnClickListener(v -> {
-            String password =passwordLogin.getText().toString().trim();
-            String email =emailLogin.getText().toString().trim();
 
-            if(TextUtils.isEmpty(password)){
+        loginButton.setOnClickListener(v -> {
+            String password = passwordLogin.getText().toString().trim();
+            String email = emailLogin.getText().toString().trim();
+
+            if (TextUtils.isEmpty(password)) {
                 passwordLogin.setError("Password is required!");
                 return;
             }
-            if(TextUtils.isEmpty(email)){
+            if (TextUtils.isEmpty(email)) {
                 emailLogin.setError("email is required!");
                 return;
             }
-            if(password.length() <8){
+            if (password.length() < 8) {
                 passwordLogin.setError("Password must be at least 8 characters!");
                 return;
             }
             progressBar2.setVisibility(View.VISIBLE);
 
             fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-                if(task.isSuccessful()){
-                    Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()) {
+                    Toast.makeText(Login.this, R.string.Toast_Login_Successful, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-                }
-                else {
-                    Toast.makeText(Login.this, "Incorrect Email/Password" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Login.this, "Incorrect Email/Password " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     progressBar2.setVisibility(View.GONE);
 
                 }
@@ -97,7 +93,7 @@ public class Login extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Login.this, "Error! "+ e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Error! " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             });

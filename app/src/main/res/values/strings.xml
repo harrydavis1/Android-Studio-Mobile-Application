@@ -15,4 +15,5 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_maps">Map</string>
+    <string name="Toast_Login_Successful">Login Successful</string>
 </resources>

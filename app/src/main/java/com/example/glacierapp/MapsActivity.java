@@ -52,6 +52,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -65,7 +67,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     LatLng latLng;
     Marker mCurrLocationMarker;
     FusedLocationProviderClient mFusedLocationClient;
-
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    String currentDateTime = dateFormat.format(new Date()); // Find todays date
 
 
     @Override
@@ -76,7 +79,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
-
 
     }
 
@@ -152,10 +154,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Happy").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.happy)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -164,10 +165,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
-
         }
         if (item.getItemId() == R.id.item3) {
             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -181,10 +180,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Angry").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.angry)).draggable(true));
-
                 }
             })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -193,8 +191,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
         }
 
@@ -210,7 +207,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Embarrassed").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.embarrased)).draggable(true));
                 }
@@ -221,8 +218,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
         }
         if (item.getItemId() == R.id.item5) {
@@ -237,7 +233,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Excited").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.excited)).draggable(true));
                 }
@@ -248,8 +244,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
         }
         if (item.getItemId() == R.id.item6) {
@@ -264,7 +259,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Sad").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.sad)).draggable(true));
                 }
@@ -275,8 +270,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
         }
         if (item.getItemId() == R.id.item7) {
@@ -291,7 +285,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Shy").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.shy)).draggable(true));
                 }
@@ -302,8 +296,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
         }
         if (item.getItemId() == R.id.item8) {
@@ -318,7 +311,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Surprised").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.suprised)).draggable(true));
                 }
@@ -329,8 +322,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
         }
         if (item.getItemId() == R.id.item9) {
@@ -345,7 +337,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.setView(mView).setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String descmessage = desctext.getText().toString();
+                    String descmessage = (desctext.getText().toString() + " - " + currentDateTime);
                     Marker marker = mGoogleMap.addMarker(
                             new MarkerOptions().position(latLng).title("Worried").snippet(descmessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.worried)).draggable(true));
                 }
@@ -356,8 +348,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             dialog.cancel();
                         }
                     });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            builder.show();
             return true;
         }
         return false;
@@ -379,8 +370,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(DialogInterface dialog, int which) {
                 String descString = desctext.getText().toString();
                 marker.setSnippet("");
-
-                marker.setSnippet(descString);
+                marker.setSnippet(descString + " : " + currentDateTime);
             }
         })
                 .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
@@ -393,18 +383,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
-
                     }
                 });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        builder.show();
     }
 
     public void searchLocation(View view) {
         EditText locationSearch = (EditText) findViewById(R.id.locationSearch);
         String location = locationSearch.getText().toString();
         List<Address> addressList = null;
-
         Geocoder geocoder = new Geocoder(this);
         try {
             addressList = geocoder.getFromLocationName(location, 1);
@@ -422,12 +409,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
                 new AlertDialog.Builder(this)
                         .setTitle("Location Permission Needed")
                         .setMessage("This app needs the Location permission")
@@ -442,7 +425,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         })
                         .create()
                         .show();
-
             } else {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
@@ -456,8 +438,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {// If request is cancelled, the result arrays are empty.
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // permission was granted, yay! Do the
-                // location-related task you need to do.
                 if (ContextCompat.checkSelfPermission(this,
                         Manifest.permission.ACCESS_FINE_LOCATION)
                         == PackageManager.PERMISSION_GRANTED) {
