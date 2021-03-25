@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity {
     EditText emailLogin, passwordLogin;
     Button loginButton;
     FirebaseAuth fAuth;
-    ProgressBar progressBar2;
+    ProgressBar progressBarLogin;
     TextView Textviewsignup, forgotpassword;
 
     @Override
@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
 
         emailLogin = findViewById(R.id.emailLogin);
         passwordLogin = findViewById(R.id.passwordLogin);
-        progressBar2 = findViewById(R.id.progressBar2);
+        progressBarLogin = findViewById(R.id.progressBarLogin);
         fAuth = FirebaseAuth.getInstance();
         loginButton = findViewById(R.id.loginButton);
         Textviewsignup = findViewById(R.id.Textviewsignup);
@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
                 passwordLogin.setError("Password must be at least 8 characters!");
                 return;
             }
-            progressBar2.setVisibility(View.VISIBLE);
+            progressBarLogin.setVisibility(View.VISIBLE);
 
             fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -64,7 +64,7 @@ public class Login extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 } else {
                     Toast.makeText(Login.this, "Incorrect Email/Password " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    progressBar2.setVisibility(View.GONE);
+                    progressBarLogin.setVisibility(View.GONE);
 
                 }
             });
@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
 
 
         Textviewsignup.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Signup.class);
+            Intent intent = new Intent(getApplicationContext(), CreateAccount.class);
             startActivity(intent);
             finish();
         });

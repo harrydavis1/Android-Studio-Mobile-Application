@@ -40,7 +40,7 @@
             android:name=".MyAccount"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".Signup"
+            android:name=".CreateAccount"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Login"

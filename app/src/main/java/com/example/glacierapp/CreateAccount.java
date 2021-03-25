@@ -25,11 +25,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Signup extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
 
     public static final String TAG = "TAG";
-    EditText fullnameSignup, passwordSignup, emailSignup, phoneSignup;
-    Button signupbutton;
+    EditText fullnameCreateaccount, passwordCreateaccount, emailCreateaccount, phoneCreateaccount;
+    Button Createaccountbutton;
     TextView Textviewlogin;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
@@ -39,41 +39,41 @@ public class Signup extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_createaccount);
 
-        fullnameSignup = findViewById(R.id.fullnameSignup);
-        passwordSignup = findViewById(R.id.passwordSignup);
-        emailSignup = findViewById(R.id.emailSignup);
-        phoneSignup = findViewById(R.id.phoneSignup);
-        signupbutton = findViewById(R.id.signupbutton);
+        fullnameCreateaccount = findViewById(R.id.fullnamecreateaccount);
+        passwordCreateaccount = findViewById(R.id.passwordcreateaccount);
+        emailCreateaccount = findViewById(R.id.emailcreateaccount);
+        phoneCreateaccount = findViewById(R.id.phonecreateaccount);
+        Createaccountbutton = findViewById(R.id.createaccountbutton);
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
         fStore = FirebaseFirestore.getInstance();
         progressBar.setVisibility(View.GONE);
 
-        signupbutton.setOnClickListener(v -> {
-            String password =passwordSignup.getText().toString().trim();
-            String email =emailSignup.getText().toString().trim();
-            String fullname =fullnameSignup.getText().toString().trim();
-            String phone =phoneSignup.getText().toString().trim();
+        Createaccountbutton.setOnClickListener(v -> {
+            String password =passwordCreateaccount.getText().toString().trim();
+            String email =emailCreateaccount.getText().toString().trim();
+            String fullname =fullnameCreateaccount.getText().toString().trim();
+            String phone =phoneCreateaccount.getText().toString().trim();
 
             if(TextUtils.isEmpty(password)){
-                passwordSignup.setError("Password is required!");
+                passwordCreateaccount.setError("Password is required!");
                 return;
             }
             if(TextUtils.isEmpty(email)){
-                emailSignup.setError("email is required!");
+                emailCreateaccount.setError("email is required!");
                 return;
             }
             if(password.length() <8){
-                passwordSignup.setError("Password must be at least 8 characters!");
+                passwordCreateaccount.setError("Password must be at least 8 characters!");
                 return;
             }
             fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(Signup.this, "User Created", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateAccount.this, "User Created", Toast.LENGTH_SHORT).show();
                         userID = fAuth.getCurrentUser().getUid();
                         DocumentReference documentReference = fStore.collection("users").document(userID);
                         Map<String,Object> user = new HashMap<>();
@@ -88,7 +88,7 @@ public class Signup extends AppCompatActivity {
                         });
                         startActivity(new Intent(getApplicationContext(), Login.class));
                     }else {
-                        Toast.makeText(Signup.this, "Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateAccount.this, "Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
 
                     }

@@ -44,17 +44,17 @@ public class MyAccount extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        fullName = findViewById(R.id.messagetext);
-        email = findViewById(R.id.email1);
-        phone = findViewById(R.id.phone1);
+        fullName = findViewById(R.id.MyAccountFullName);
+        email = findViewById(R.id.MyAccountEmail);
+        phone = findViewById(R.id.MyAccountPhone);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         user = fAuth.getCurrentUser();
         userId = fAuth.getCurrentUser().getUid();
 
-        resetbutton = findViewById(R.id.sendbutton);
-        doneButton = findViewById(R.id.donebutton);
+        resetbutton = findViewById(R.id.MyAccountResetButton);
+        doneButton = findViewById(R.id.MyAccountDoneButton);
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {

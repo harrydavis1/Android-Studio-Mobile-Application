@@ -23,7 +23,7 @@
             tools:layout_editor_absoluteX="-3dp" />
 
         <Button
-            android:id="@+id/sendbutton"
+            android:id="@+id/MyAccountResetButton"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginTop="32dp"
@@ -36,11 +36,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone1"
+            app:layout_constraintTop_toBottomOf="@+id/MyAccountPhone"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/donebutton"
+            android:id="@+id/MyAccountDoneButton"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:background="@color/colorAccent"
@@ -52,11 +52,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sendbutton"
+            app:layout_constraintTop_toBottomOf="@+id/MyAccountResetButton"
             app:layout_constraintVertical_bias="0.131" />
 
         <EditText
-            android:id="@+id/messagetext"
+            android:id="@+id/MyAccountFullName"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:background="@drawable/custom_input_label"
@@ -73,7 +73,7 @@
             app:layout_constraintVertical_bias="0.28" />
 
         <EditText
-            android:id="@+id/email1"
+            android:id="@+id/MyAccountEmail"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:background="@drawable/custom_input_label"
@@ -89,7 +89,7 @@
             app:layout_constraintVertical_bias="0.43" />
 
         <EditText
-            android:id="@+id/phone1"
+            android:id="@+id/MyAccountPhone"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:background="@drawable/custom_input_label"
@@ -150,7 +150,7 @@
             app:layout_constraintVertical_bias="0.523" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/textViewMyAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Account"

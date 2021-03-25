@@ -62,8 +62,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     DrawerLayout drawerLayout;
     GoogleMap mGoogleMap;
     SupportMapFragment mapFrag;
-    LocationRequest mLocationRequest;
-    Location mLastLocation;
+    LocationRequest LocationRequest;
+    Location LastLocation;
     LatLng latLng;
     Marker mCurrLocationMarker;
     FusedLocationProviderClient mFusedLocationClient;
@@ -97,16 +97,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(15000);
-        mLocationRequest.setFastestInterval(15000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        LocationRequest = new LocationRequest();
+        LocationRequest.setInterval(15000);
+        LocationRequest.setFastestInterval(15000);
+        LocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
                 //Location Permission already granted
-                mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback,
+                mFusedLocationClient.requestLocationUpdates(LocationRequest, mLocationCallback,
                         Looper.myLooper());
                 mGoogleMap.setMyLocationEnabled(true);
             } else {
@@ -114,7 +114,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 checkLocationPermission();
             }
         }
-        else {	            mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback,
+        else {	            mFusedLocationClient.requestLocationUpdates(LocationRequest, mLocationCallback,
                 Looper.myLooper());
             mGoogleMap.setMyLocationEnabled(true);
         }
@@ -127,7 +127,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (locationList.size() > 0) {
                 //The last location in the list is the newest
                 Location location = locationList.get(locationList.size()-1);
-                mLastLocation = location;
+                LastLocation = location;
 
                 if (mCurrLocationMarker != null) {
                     mCurrLocationMarker.remove();
@@ -417,7 +417,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
                                 ActivityCompat.requestPermissions(MapsActivity.this,
                                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                                         MY_PERMISSIONS_REQUEST_LOCATION);
@@ -426,7 +425,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         .create()
                         .show();
             } else {
-                // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION );
@@ -435,18 +433,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {// If request is cancelled, the result arrays are empty.
+        if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (ContextCompat.checkSelfPermission(this,
                         Manifest.permission.ACCESS_FINE_LOCATION)
                         == PackageManager.PERMISSION_GRANTED) {
-                    mFusedLocationClient.requestLocationUpdates(mLocationRequest,
+                    mFusedLocationClient.requestLocationUpdates(LocationRequest,
                             mLocationCallback, Looper.myLooper());
                     mGoogleMap.setMyLocationEnabled(true);
                 }
             } else {
-                // if not allow a permission, the application will exit
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

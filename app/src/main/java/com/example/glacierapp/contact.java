@@ -35,9 +35,9 @@ public class contact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-        messageText = findViewById(R.id.messageText);
+        messageText = findViewById(R.id.GetInTouchMessageText);
 
-        sendBut = findViewById(R.id.sendbutton);
+        sendBut = findViewById(R.id.GetInTouchSendButton);
         drawerLayout = findViewById(R.id.drawer_layout);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
